@@ -19,11 +19,20 @@ function App() {
         newStudents[studentIndex] = newStudent;
         setStudents(newStudents);
     };
+    const deleteStudent = (id) => {
+        const studentIndex = studentsState.findIndex((student) => {
+            return student.id === id;
+        });
+        const students = [...studentsState];
+        students.splice(studentIndex, 1);
+        setStudents(students);
+    };
     return (
         <div className='App'>
             <Students
                 studentsList={studentsState}
                 nameChanged={handleNameChange}
+                deleted={deleteStudent}
             />
         </div>
     );

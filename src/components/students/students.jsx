@@ -13,6 +13,7 @@ function Students(props) {
                 phone={student.phoneNumber}
                 email={student.email}
                 nameChanged={(event) => props.nameChanged(student.id, event)}
+                deleted={() => props.deleted(student.id)}
             />
         ))
     );

@@ -13,6 +13,7 @@ function Student(props) {
             <input type="number" value={props.phone} />
             <label>:ایمیل</label>
             <input type="email" value={props.email} />
+            <label style={{color: 'red', cursor: 'pointer'}} onClick={props.deleted}>حذف</label>
         </div>
     );
 }
