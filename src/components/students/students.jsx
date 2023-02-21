@@ -12,6 +12,7 @@ function Students(props) {
                 class={student.classNumber}
                 phone={student.phoneNumber}
                 email={student.email}
+                nameChanged={(event) => props.nameChanged(student.id, event)}
             />
         ))
     );
