@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Students from './components/students/students';
 import Button from './components/ui/button/button';
@@ -32,8 +32,23 @@ function App() {
     const handleToggle = () => {
         setToggle(!toggle);
     };
+    const [searchBarValue, setSearchBarValue] = useState('');
+    const [arrayHolder, setArrayHolder] = useState([]);
+    useEffect(() => {
+        setArrayHolder(studentsState);
+    }, []);
+    const searchFilterFunction = (event) => {
+        const itemData = arrayHolder.filter((item) => {
+            const itemData = item.name.toUpperCase();
+            const itemValue = event.target.value.toUpperCase();
+            return itemData.indexOf(itemValue) > -1;
+        });
+        setSearchBarValue(event.target.value);
+        setStudents(itemData);
+    };
     return (
         <div className='App'>
+            <input type="text" placeholder='Search..' value={searchBarValue} onChange={searchFilterFunction} />
             <Button btnType='success' clicked={handleToggle}>تغییر وضعیت نمایش</Button>
             <Students
                 studentsList={studentsState}
