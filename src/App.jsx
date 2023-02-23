@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import Students from './components/students/students';
+import Button from './components/ui/button/button';
 
 function App() {
     const [studentsState, setStudents] = useState([
@@ -27,12 +28,18 @@ function App() {
         students.splice(studentIndex, 1);
         setStudents(students);
     };
+    const [toggle, setToggle] = useState(false);
+    const handleToggle = () => {
+        setToggle(!toggle);
+    };
     return (
         <div className='App'>
+            <Button btnType='success' clicked={handleToggle}>تغییر وضعیت نمایش</Button>
             <Students
                 studentsList={studentsState}
                 nameChanged={handleNameChange}
                 deleted={deleteStudent}
+                toggle={toggle}
             />
         </div>
     );
