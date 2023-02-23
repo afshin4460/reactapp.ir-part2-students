@@ -1,5 +1,6 @@
 import React from 'react';
 import './student.css';
+import Button from '../../ui/button/button';
 
 function Student(props) {
     return (
@@ -13,7 +14,7 @@ function Student(props) {
             <input type="number" value={props.phone} />
             <label>:ایمیل</label>
             <input type="email" value={props.email} />
-            <label style={{color: 'red', cursor: 'pointer'}} onClick={props.deleted}>حذف</label>
+            <Button clicked={props.deleted} btnType='danger'>حذف</Button>
         </div>
     );
 }
