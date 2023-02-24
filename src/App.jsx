@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import Students from './components/students/students';
 import Button from './components/ui/button/button';
+import NewStudent from './components/students/student/newStudent/newStudents';
 
 function App() {
     const [studentsState, setStudents] = useState([
@@ -48,6 +49,7 @@ function App() {
     };
     return (
         <div className='App'>
+            <NewStudent />
             <input type="text" placeholder='Search..' value={searchBarValue} onChange={searchFilterFunction} />
             <Button btnType='success' clicked={handleToggle}>تغییر وضعیت نمایش</Button>
             <Students
