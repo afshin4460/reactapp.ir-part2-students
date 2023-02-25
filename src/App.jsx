@@ -47,9 +47,50 @@ function App() {
         setSearchBarValue(event.target.value);
         setStudents(itemData);
     };
+    const [studentName, setStudentName] = useState('');
+    const [studentClass, setStudentClass] = useState('');
+    const [studentPhone, setStudentPhone] = useState('');
+    const [studentEmail, setStudentEmail] = useState('');
+    const studentNameHandler = (event) => {
+        setStudentName(event.target.value);
+    };
+    const studentClassHandler = (event) => {
+        setStudentClass(event.target.value);
+    };
+    const studentPhoneHandler = (event) => {
+        setStudentPhone(event.target.value);
+    };
+    const studentEmailHandler = (event) => {
+        setStudentEmail(event.target.value);
+    };
+    const addStudentHandler = () => {
+        const newStudentState = [...studentsState];
+        newStudentState.push({
+            id: studentsState.length,
+            name: studentName,
+            classNumber: studentClass,
+            phoneNumber: studentPhone,
+            email: studentEmail
+        });
+        setStudents(newStudentState);
+        setStudentName('');
+        setStudentClass('');
+        setStudentPhone('');
+        setStudentEmail('');
+    };
     return (
         <div className='App'>
-            <NewStudent />
+            <NewStudent
+                studentName={studentName}
+                studentClass={studentClass}
+                studentPhone={studentPhone}
+                studentEmail={studentEmail}
+                studentNameHandler={studentNameHandler}
+                studentClassHandler={studentClassHandler}
+                studentPhoneHandler={studentPhoneHandler}
+                studentEmailHandler={studentEmailHandler}
+                addStudent={addStudentHandler}
+            />
             <input type="text" placeholder='Search..' value={searchBarValue} onChange={searchFilterFunction} />
             <Button btnType='success' clicked={handleToggle}>تغییر وضعیت نمایش</Button>
             <Students

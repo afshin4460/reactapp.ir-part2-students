@@ -4,7 +4,7 @@ import './students.css';
 
 function Students(props) {
 
-    const students = props.studentsList.map((student, index) =>(
+    const students = props.studentsList.map((student, index) => (
         <Student 
             key={index}
             id={student.id}
