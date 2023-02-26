@@ -1,6 +1,7 @@
 import React from 'react';
 import Student from './student/student';
 import './students.css';
+import PropTypes from 'prop-types';
 
 function Students(props) {
 
@@ -30,4 +31,11 @@ function Students(props) {
     );
 }
 
-export default Students;
+export default React.memo(Students);
+
+Students.propTypes = {
+    studentsList: PropTypes.array.isRequired,
+    toggle: PropTypes.bool.isRequired,
+    nameChanged: PropTypes.func.isRequired,
+    deleted: PropTypes.func.isRequired
+};

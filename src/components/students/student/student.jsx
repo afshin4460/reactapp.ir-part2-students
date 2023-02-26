@@ -1,6 +1,7 @@
 import React from 'react';
 import './student.css';
 import Button from '../../ui/button/button';
+import PropTypes from 'prop-types';
 
 function Student(props) {
     return (
@@ -19,4 +20,14 @@ function Student(props) {
     );
 }
 
-export default Student;
+export default React.memo(Student);
+
+Student.propTypes = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    nameChanged: PropTypes.func.isRequired,
+    class: PropTypes.number.isRequired,
+    phone: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+    deleted: PropTypes.func.isRequired
+};

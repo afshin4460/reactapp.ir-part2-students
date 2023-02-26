@@ -1,6 +1,7 @@
 import React from 'react';
 import './newStudent.css';
 import Button from '../../../ui/button/button';
+import PropTypes from 'prop-types';
 
 function NewStudent(props) {
     const {studentName, studentNameHandler, studentClass, studentClassHandler, studentPhone, studentPhoneHandler,
@@ -21,4 +22,16 @@ function NewStudent(props) {
     );
 }
 
-export default NewStudent;
+export default React.memo(NewStudent);
+
+NewStudent.propTypes = {
+    studentName: PropTypes.string.isRequired,
+    studentClass: PropTypes.string.isRequired,
+    studentPhone: PropTypes.string.isRequired,
+    studentEmail: PropTypes.string.isRequired,
+    studentNameHandler: PropTypes.func.isRequired,
+    studentClassHandler: PropTypes.func.isRequired,
+    studentPhoneHandler: PropTypes.func.isRequired,
+    studentEmailHandler: PropTypes.func.isRequired,
+    addStudent: PropTypes.func.isRequired
+};
