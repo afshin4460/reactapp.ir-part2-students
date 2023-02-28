@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
 import Students from './components/students/students';
 import Button from './components/ui/button/button';
@@ -37,6 +37,7 @@ function App() {
     const [arrayHolder, setArrayHolder] = useState([]);
     useEffect(() => {
         setArrayHolder(studentsState);
+        inputEl.current.focus();
     }, []);
     const searchFilterFunction = (event) => {
         const itemData = arrayHolder.filter((item) => {
@@ -78,6 +79,7 @@ function App() {
         setStudentPhone('');
         setStudentEmail('');
     };
+    const inputEl = useRef(null);
     return (
         <div className='App'>
             <NewStudent
@@ -91,7 +93,7 @@ function App() {
                 studentEmailHandler={studentEmailHandler}
                 addStudent={addStudentHandler}
             />
-            <input type="text" placeholder='Search..' value={searchBarValue} onChange={searchFilterFunction} />
+            <input type="text" placeholder='Search..' value={searchBarValue} onChange={searchFilterFunction} ref={inputEl} />
             <Button btnType='success' clicked={handleToggle}>تغییر وضعیت نمایش</Button>
             <Students
                 studentsList={studentsState}

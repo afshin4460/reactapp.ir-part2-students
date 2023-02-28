@@ -1,7 +1,7 @@
-function Wraper(props) {
+function Wrapper(props) {
     return props.children;
 }
 
 /* const Wraper = props => props.children; */
 
-export default Wraper;
+export default Wrapper;
