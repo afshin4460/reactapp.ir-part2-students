@@ -80,6 +80,9 @@ function App() {
         setStudentEmail('');
     };
     const inputEl = useRef(null);
+    const executeScroll = () => {
+        window.scroll(0, inputEl.current.offsetTop);
+    };
     return (
         <div className='App'>
             <NewStudent
@@ -101,6 +104,7 @@ function App() {
                 deleted={deleteStudent}
                 toggle={toggle}
             />
+            <Button btnType='danger' clicked={executeScroll}>Click To Scroll Top</Button>
         </div>
     );
 }
