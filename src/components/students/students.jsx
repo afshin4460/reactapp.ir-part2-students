@@ -2,20 +2,22 @@ import React from 'react';
 import Student from './student/student';
 import './students.css';
 import PropTypes from 'prop-types';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 function Students(props) {
 
     const students = props.studentsList.map((student, index) => (
-        <Student 
-            key={index}
-            id={student.id}
-            name={student.name}
-            class={student.classNumber}
-            phone={student.phoneNumber}
-            email={student.email}
-            nameChanged={(event) => props.nameChanged(student.id, event)}
-            deleted={() => props.deleted(student.id)}
-        />
+        <ErrorBoundary key={index}>
+            <Student 
+                id={student.id}
+                name={student.name}
+                class={student.classNumber}
+                phone={student.phoneNumber}
+                email={student.email}
+                nameChanged={(event) => props.nameChanged(student.id, event)}
+                deleted={() => props.deleted(student.id)}
+            />
+        </ErrorBoundary>
     ));
 
     if (props.toggle) {
